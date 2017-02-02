@@ -2,7 +2,6 @@
 robot:
   include: 
     - subsystems
-    - logging
   pindefs:
     PWM0: talon
     PWM1: talon
@@ -17,8 +16,6 @@ subsystems:
       motor-left: PWM0
       motor-right: PWM1
       control: tank
-    log:
-      refresh: 100ms
-      values:
-        - motor-left
-        - motor-right
+      joysticks:
+        - USB0
+        - USB1

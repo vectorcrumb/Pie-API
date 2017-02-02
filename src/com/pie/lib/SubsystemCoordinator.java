@@ -2,15 +2,15 @@ package com.pie.lib;
 
 import java.util.Vector;
 
-import com.pie.robot.subsystems.SubComponent;
+import com.pie.ingredients.Cookable;
 
 public class SubsystemCoordinator {
 	
-	private Vector<SubComponent> subsystems;
+	private Vector<Cookable> subsystems;
 	private static SubsystemCoordinator instance;
 	
 	private SubsystemCoordinator () {
-		this.subsystems = new Vector<SubComponent>();
+		this.subsystems = new Vector<Cookable>();
 		// TODO: Add IO components getInstance()
 	}
 	
@@ -22,18 +22,18 @@ public class SubsystemCoordinator {
 	}
 	
 	public void updateSubsystems() {
-		for (SubComponent subsystem : subsystems) {
+		for (Cookable subsystem : subsystems) {
 			subsystem.update();
 		}
 	}
 	
 	public void stopSubsystems() {
-		for (SubComponent subsystem : subsystems) {
+		for (Cookable subsystem : subsystems) {
 			subsystem.disable();
 		}
 	}
 	
-	public void addSubsytem(SubComponent subsystem) {
+	public void addSubsytem(Cookable subsystem) {
 		subsystems.addElement(subsystem);
 	}
 	
