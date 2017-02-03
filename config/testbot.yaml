@@ -11,7 +11,7 @@ robot:
 # Subsystems Module
 subsystems:
   chassis:
-    type: tank-drive-2
+    type: tank_drive_2
     config:
       motor-left: PWM0
       motor-right: PWM1

@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.concurrent.PriorityBlockingQueue;
 
 import com.pie.lib.logger.LoggerMessage.Priority;
-import com.pie.lib.util.SimpleConstants;
+import com.pie.lib.util.PieConstants;
 
 public class Logger {
 	
@@ -15,7 +15,7 @@ public class Logger {
 	private int priorityLevel;
 
 	private Logger() {
-		this.debugLog = new PriorityBlockingQueue<LoggerMessage>(SimpleConstants.messageLogCount, 
+		this.debugLog = new PriorityBlockingQueue<LoggerMessage>(PieConstants.messageLogCount, 
 				Comparator.comparing(LoggerMessage::getPriorityValue)
 				.thenComparing(LoggerMessage::getTimestampValue));
 		this.priorityLevel = 0;
