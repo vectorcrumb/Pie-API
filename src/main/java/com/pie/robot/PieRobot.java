@@ -47,6 +47,12 @@ public class PieRobot extends IterativeRobot {
 	public void disabledPeriodic() {
 		
 	}
+
+	public boolean tryTest() {
+//		this.robotInit();
+		coordinator.updateSubsystems();
+		return true;
+	}
 	
 }
 
