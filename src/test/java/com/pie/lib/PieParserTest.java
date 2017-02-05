@@ -2,6 +2,7 @@ package com.pie.lib;
 
 import com.pie.ingredients.PiePort;
 import com.pie.ingredients.PortCatalog;
+import com.pie.lib.PieParser;
 import com.pie.lib.util.PieConstants;
 import com.pie.robot.controllers.DSControllerFactory;
 import com.pie.robot.controllers.PWMMotorFactory;
