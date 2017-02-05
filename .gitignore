@@ -55,3 +55,7 @@ local.properties
 build/
 dist/
 info/
+.idea/
+.gradle/
+classes/
+lib-dev/
