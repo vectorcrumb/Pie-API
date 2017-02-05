@@ -1,24 +1,21 @@
 package com.pie.lib;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlReader;
 import com.pie.ingredients.PiePort;
 import com.pie.ingredients.PortCatalog.*;
 import com.pie.robot.controllers.DSControllerFactory.DSControllerCatalog;
 import com.pie.robot.controllers.PWMMotorFactory.MotorCatalog;
-import com.esotericsoftware.yamlbeans.YamlException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PieParser {
 	
 	private static PieParser parser;
-	
-	private YamlReader reader;
+
 	private Map robotData;
 	
 	public static PieParser getInstance(String filePath) {
@@ -31,7 +28,7 @@ public class PieParser {
 	private PieParser(String filePath) {
 		// Constructor
 		try {
-			this.reader = new YamlReader(new FileReader(filePath));
+			YamlReader reader = new YamlReader(new FileReader(filePath));
 			this.robotData = (Map) reader.read();
 		} catch (FileNotFoundException | YamlException | ClassCastException e) {
 			e.printStackTrace();
@@ -40,9 +37,9 @@ public class PieParser {
 	
 	public HashMap<PiePort, MotorCatalog> getPinDefinitions() {
 		Map<String, String> tempPinDefs = (Map<String, String>) ((Map) this.robotData.get("robot")).get("pindefs");
-		HashMap<PiePort, MotorCatalog> pinDefs = new HashMap<PiePort, MotorCatalog>();
+		HashMap<PiePort, MotorCatalog> pinDefs = new HashMap<>();
 		
-		tempPinDefs.entrySet().forEach((entry) -> {
+		tempPinDefs.entrySet().forEach(entry -> {
 			try {
 				PiePort port = PWMPort.valueOf(entry.getKey());
 				MotorCatalog motor = MotorCatalog.valueOf(entry.getValue().toUpperCase());
@@ -58,7 +55,7 @@ public class PieParser {
 		Map<String, String> tempControlDefs = (Map<String, String>) ((Map) this.robotData.get("robot")).get("controls");
 		HashMap<PiePort, DSControllerCatalog> controlDefs = new HashMap<PiePort, DSControllerCatalog>();
 		
-		tempControlDefs.entrySet().forEach((entry) -> {
+		tempControlDefs.entrySet().forEach(entry -> {
 			try {
 				PiePort port = USBPort.valueOf(entry.getKey());
 				DSControllerCatalog controller = DSControllerCatalog.valueOf(entry.getValue().toUpperCase());
