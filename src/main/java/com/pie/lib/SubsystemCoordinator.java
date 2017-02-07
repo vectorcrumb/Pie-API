@@ -11,18 +11,18 @@ public class SubsystemCoordinator {
 	
 	private Vector<Ingredient> subsystems;
 	private static SubsystemCoordinator instance;
-	
-	private SubsystemCoordinator () {
-		this.subsystems = new Vector<Ingredient>();
-	}
-	
+
 	public static SubsystemCoordinator getInstance() {
 		if (instance == null) {
 			instance = new SubsystemCoordinator();
 		}
 		return instance;
 	}
-	
+
+	private SubsystemCoordinator () {
+		this.subsystems = new Vector<>();
+	}
+
 	public void updateSubsystems() {
 		for (Ingredient subsystem : subsystems) {
 			subsystem.update();
@@ -40,7 +40,8 @@ public class SubsystemCoordinator {
 	}
 	
 	public void populateSubsystems(HashMap<String, Object> subSysDefs) {
-		subSysDefs.entrySet().forEach((entry) -> {
+		
+		subSysDefs.entrySet().forEach(entry -> {
 			String name = entry.getKey();
 			HashMap<String, Object> configData = (HashMap<String, Object>) entry.getValue();
 			IngredientCatalog ingredientType = IngredientCatalog.valueOf(((String) configData.get("type")).toUpperCase());

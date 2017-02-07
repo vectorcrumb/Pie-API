@@ -32,15 +32,15 @@ public class Logger {
 		this.priorityLevel = LoggerMessage.priorityMapping.get(priority);
 	}
 	
+	public void addMessage(LoggerMessage message) {
+		this.addMessage(message, true);
+	}
+	
 	public void addMessage(LoggerMessage message, boolean display) {
 		this.debugLog.add(message);
 		if (display) {
 			this.publishMostRecentMessage(true);
 		}
-	}
-	
-	public void addMessage(LoggerMessage message) {
-		this.addMessage(message, true);
 	}
 	
 	public void publishMostRecentMessage(boolean remove) {

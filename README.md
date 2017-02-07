@@ -19,7 +19,6 @@ The configuration file is composed of various modules, which are being developed
 robot:
   include: 
     - subsystems
-    - logging
   pindefs:
     PWM0: talon
     PWM1: talon
@@ -29,7 +28,7 @@ robot:
 # Subsystems Module
 subsystems:
   chassis:
-    type: tank-drive-2
+    type: tank_drive_2
     config:
       motor-left: PWM0
       motor-right: PWM1
@@ -63,12 +62,12 @@ It includes three important definitions:
 
 ## Subsystems
 
-The subsystems module is used to define *the relation between Ingredient and the inputs/outputs connected to the roboRIO*. Ingredients are preprogrammed functions of the framework which work by taking inputs from the sensors and driver station and sending output to the actuators connected to the robot. They are essential parts of your robot, but how you combine them is up to you. A code sample of valid subsystems definition can be seen below:
+The subsystems module is used to define *the relation between Ingredients and the inputs/outputs connected to the roboRIO*. Ingredients are preprogrammed functions of the framework which work by taking inputs from the sensors and driver station and sending output to the actuators connected to the robot. They are essential parts of your robot, but how you combine them is up to you. A code sample of valid subsystems definition can be seen below:
 
 ```yaml
 subsystems:
   chassis:
-    type: tank-drive-2
+    type: tank_drive_2
     config:
       motor-left: PWM0
       motor-right: PWM1

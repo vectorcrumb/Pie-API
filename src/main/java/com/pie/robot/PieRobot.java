@@ -20,7 +20,7 @@ public class PieRobot extends IterativeRobot {
 		double begTime = Timer.getFPGATimestamp();
 		configurator.configureRobot();
 		double endTime = Timer.getFPGATimestamp();
-		System.out.println(String.format("Finished setting up the robot. Took: %1$.5f", endTime - begTime));
+		System.out.println(String.format("Finished setting up the robot. Took: %1$.5f seconds.", endTime - begTime));
 	}
 	
 	public void autonomousInit() {
@@ -46,12 +46,6 @@ public class PieRobot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		
-	}
-
-	public boolean tryTest() {
-//		this.robotInit();
-		coordinator.updateSubsystems();
-		return true;
 	}
 	
 }

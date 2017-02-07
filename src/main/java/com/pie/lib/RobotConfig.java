@@ -3,6 +3,7 @@ package com.pie.lib;
 import java.util.HashMap;
 
 import com.pie.ingredients.PiePort;
+import com.pie.lib.util.FlashDriveFinder;
 import com.pie.lib.util.PieConstants;
 import com.pie.robot.controllers.DSControllerFactory.DSControllerCatalog;
 import com.pie.robot.controllers.PWMMotorFactory.MotorCatalog;
@@ -15,6 +16,7 @@ public class RobotConfig {
 	private RobotOutput robotOut;
 	private DriverInput driverIn;
 	private SubsystemCoordinator subsystems;
+	private FlashDriveFinder flashDrive;
 	
 	private PieParser parser;
 	
@@ -26,9 +28,16 @@ public class RobotConfig {
 	}
 	
 	private RobotConfig() {
-		this.parser = PieParser.getInstance(PieConstants.robotFile);
 		this.robotOut = RobotOutput.getInstance();
 		this.driverIn = DriverInput.getInstance();
+		this.subsystems = SubsystemCoordinator.getInstance();
+		this.flashDrive = FlashDriveFinder.getInstance();
+		
+		String path = flashDrive.getPath();
+		System.out.print("Path to use is: ");
+		System.out.println(path);
+		
+		this.parser = PieParser.getInstance(path);
 	}
 	
 	public void configureRobot () {

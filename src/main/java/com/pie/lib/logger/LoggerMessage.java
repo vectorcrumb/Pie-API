@@ -36,6 +36,14 @@ public class LoggerMessage {
 		this(priority, message, time, null);
 	}
 	
+	public LoggerMessage(String message, Date time, Class<?> superClass) {
+		this(Priority.STATUS, message, time, superClass);
+	}
+	
+	public LoggerMessage(String message, Class<?> superClass) {
+		this(Priority.STATUS, message, new Date(), superClass);
+	}
+	
 	public LoggerMessage(Priority priority, String message, Date time, Class<?> superClass) {
 		if (superClass != null) {
 			this.className = superClass.getName();

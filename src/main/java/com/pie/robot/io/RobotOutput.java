@@ -22,15 +22,17 @@ public class RobotOutput {
 	
 	private RobotOutput() {
 		// TODO Auto-generated constructor stub
+		this.pwmOutputs = new HashMap<>();
 	}
 	
 	public void populatePWM(HashMap<PiePort, MotorCatalog> pwmDefs) {
-		pwmDefs.entrySet().forEach((entry) -> {
+		
+		pwmDefs.entrySet().forEach(entry -> {
 			String port = entry.getKey().toString();
 			int pwmPin = Integer.parseInt(port.substring(port.length() - 1));
 			SpeedController motorController = PWMMotorFactory.createMotor(entry.getValue(), pwmPin);
 			this.pwmOutputs.put(entry.getKey(), motorController);
-		});	
+		});
 	}
 	
 	public SpeedController get(PiePort pwmPort) {
